@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr. J Ayisha • Cost Calculator</title>
+  <meta name="description" content="Live cost calculator for fees and services by Dr. J Ayisha." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="assets/ayisha-mark.svg" alt="Ayisha brand mark" class="brand-mark" />
+      <div class="brand-text">
+        <h1>Dr. J Ayisha</h1>
+        <p class="tagline">Care with clarity • Transparent costs, thoughtful service</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card calculator-card" aria-labelledby="calcTitle">
+      <h2 id="calcTitle">Cost calculator</h2>
+      <p class="subnote">Enter medicine and fees. Set percentages; Preparation and Transport are auto-calculated.</p>
+
+      <form id="calcForm" autocomplete="off" novalidate>
+        <div class="grid two">
+          <div class="field">
+            <label for="medicine"><span class="req">*</span> Medicine cost (₹)</label>
+            <input type="number" inputmode="decimal" id="medicine" min="0" step="0.01" placeholder="e.g., 200" aria-describedby="medHelp">
+            <small id="medHelp" class="help">User input required</small>
+          </div>
+
+          <div class="field">
+            <label for="fees"><span class="req">*</span> Fees (₹)</label>
+            <input type="number" inputmode="decimal" id="fees" min="0" step="0.01" placeholder="e.g., 500" aria-describedby="feesHelp">
+            <small id="feesHelp" class="help">User input required</small>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="field">
+            <label for="prepPercent"><span class="req">*</span> Preparation (%)</label>
+            <input type="number" id="prepPercent" min="0" max="1000" step="1" placeholder="e.g., 80" aria-describedby="prepHelp">
+            <small id="prepHelp" class="help">User input required • Applied on Fees</small>
+          </div>
+
+          <div class="field">
+            <label for="transportPercent"><span class="req">*</span> Transport & Packaging (%)</label>
+            <input type="number" id="transportPercent" min="0" max="1000" step="1" placeholder="e.g., 40" aria-describedby="transHelp">
+            <small id="transHelp" class="help">User input required • Applied on Fees</small>
+          </div>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="Cost breakdown">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th>Items</th>
+                <th>Cost (₹)</th>
+                <th>Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Medicine</td>
+                <td id="medicineOut">—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Fees</td>
+                <td id="feesOut">—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Preparation</td>
+                <td id="prepOut">—</td>
+                <td id="prepPctOut">—</td>
+              </tr>
+              <tr>
+                <td>Transport &amp; Packaging</td>
+                <td id="transOut">—</td>
+                <td id="transPctOut">—</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="total-row">
+                <td>Total</td>
+                <td id="totalOut">₹ 0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn ghost" id="resetBtn">Reset</button>
+          <button type="button" class="btn primary" id="copyBtn">Copy summary</button>
+          <span class="copy-status" id="copyStatus" aria-live="polite"></span>
+        </div>
+
+        <p class="fine-note">Cells formulated — computed automatically from percentages. Do not change computed cells.</p>
+      </form>
+    </section>
+
+    <section class="card contact-card" aria-labelledby="contactTitle">
+      <h2 id="contactTitle">Quick contact</h2>
+      <div class="contact-grid">
+        <a class="contact-btn" href="tel:+91XXXXXXXXXX" aria-label="Call Dr. Ayisha">
+          <span class="label">Call</span>
+        </a>
+        <a class="contact-btn" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp Dr. Ayisha">
+          <span class="label">WhatsApp</span>
+        </a>
+        <a class="contact-btn" href="mailto:clinic@example.com" aria-label="Email Dr. Ayisha">
+          <span class="label">Email</span>
+        </a>
+      </div>
+      <p class="micro">Replace placeholders with real contact details.</p>
+    </section>
+
+    <section class="card qr-card" aria-labelledby="qrTitle">
+      <h2 id="qrTitle">Share this page</h2>
+      <p class="subnote">Scan or print the QR for quick access.</p>
+      <div class="qr-wrap">
+        <img id="qrImage" alt="QR code for this page" />
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="downloadQR">Download QR</button>
+        <button type="button" class="btn ghost" id="printQR">Print</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Dr. J Ayisha • Designed by Saifullah • Hosted on GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
